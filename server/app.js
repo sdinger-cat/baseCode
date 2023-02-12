@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const dotenv = require("dotenv")
 const cors = require("cors");
+const mongoose = require("mongoose");
 
 
 const indexRouter = require('./routes/index');
@@ -35,6 +36,20 @@ const corsOptions = {
 };
 
 var app = express();
+
+mongoose.Promise = global.Promise;
+mongoose.connect(process.env.DB_URI, {
+//  useNewUrlParser: true,
+//  useUnifiedTopology: true,
+//  useCreateIndex: true,
+//  serverSelectionTimeoutMS: 5000,
+//  keepAlive: 300000,
+//  connectTimeoutMS: 30000,
+})
+.catch((err) => console.log(err))
+.then((res) => {
+  console.log("Mongo connection success");
+});
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');

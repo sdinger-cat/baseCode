@@ -10,6 +10,8 @@ const cors = require("cors");
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 
+const apiIndex = require("./routes/index");
+
 // 환경 변수 셋팅
 //dotenv.config({ path : path.join(__dirname, ".env.dev")})
 dotenv.config({ path : path.join(__dirname, ".env")})
@@ -51,8 +53,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+// API 라우터 등록 , 버젼 정보 및 path
+apiIndex.list.map((obj) => {
+  app.use(`/v${apiIndex.version}/${obj.name}`, obj.router);
+});
+
 
 app.use(function(req, res, next) {
   next(createError(404));

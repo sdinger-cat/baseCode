@@ -6,7 +6,7 @@ const logger = require('morgan');
 const dotenv = require("dotenv")
 const cors = require("cors");
 const mongoose = require("mongoose");
-
+const passport = require("passport");
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');

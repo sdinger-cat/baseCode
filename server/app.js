@@ -39,6 +39,7 @@ var app = express();
 
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DB_URI, {
+//  커넥션 옵션 기본 정보 수정
 //  useNewUrlParser: true,
 //  useUnifiedTopology: true,
 //  useCreateIndex: true,

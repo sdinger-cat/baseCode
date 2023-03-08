@@ -15,6 +15,10 @@ const apiIndex = require("./routes/index");
 
 // 환경 변수 셋팅
 //dotenv.config({ path : path.join(__dirname, ".env.dev")})
+//dotenv.config({ path : path.join(__dirname, ".env")})
+//process.env.NODE_ENV = process.env.NODE_ENV && process.env.NODE_ENV.trim().toLowerCase() == "production" ? "production" : "development"
+//console.log("stratMode : ", process.env.NODE_ENV)
+
 dotenv.config({ path : path.join(__dirname, ".env")})
 process.env.NODE_ENV = process.env.NODE_ENV && process.env.NODE_ENV.trim().toLowerCase() == "production" ? "production" : "development"
 console.log("stratMode : ", process.env.NODE_ENV)
